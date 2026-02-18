@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>para mi princesita</title>
+
+<!-- FUENTES -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* Fondo rosa claro (ajusta a tu gusto) */
+  --bg1:#ffd1e6; /* arriba */
+  --bg2:#ff7fb1; /* centro */
+  --bg3:#ff4f8b; /* abajo */
+  --ink:#6b1f43;
+}
+
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at top, var(--bg1), var(--bg2) 55%, var(--bg3));
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Playfair Display',serif;
+}
+
+/* TEXTO DE FONDO */
+.background-text{
+  position:absolute;
+  top:0%;
+  width:100%;
+  text-align:center;
+  font-size:120px;
+  font-family:'Great Vibes',cursive;
+  color:rgba(255,255,255,0.18); /* un poquito más visible sobre rosa */
+  z-index:5;
+  pointer-events:none;
+}
+
+/* ESTRELLAS */
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:.75;
+}
+
+/* CORAZONES */
+.heart{
+  position:absolute;
+  font-size:20px;
+  color:#ff2f6d;
+  animation:float linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(110vh)}
+  to{transform:translateY(-10vh)}
+}
+
+/* SOBRE */
+.envelope{
+  position:relative;
+  width:650px;
+  height:700px;
+  background:#fff5e6;
+  border-radius:16px;
+  box-shadow:0 25px 45px rgba(0,0,0,.28);
+  z-index:2;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+/* BROCHE */
+.heart-lock{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ff6f91,#ff2f6d);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:44px;
+  z-index:15;
+  animation:glow 3s ease-in-out infinite;
+  transition:transform .6s ease,opacity .6s ease;
+}
+@keyframes glow{
+  0%{box-shadow:0 0 10px rgba(255,80,120,.55)}
+  50%{box-shadow:0 0 25px rgba(255,140,180,.85)}
+  100%{box-shadow:0 0 10px rgba(255,80,120,.55)}
+}
+.envelope.open .heart-lock{
+  transform:translate(-50%,-50%) scale(0);
+  opacity:0;
+}
+
+/* TAPAS */
+.flap-top{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#f6d6c9;
+  clip-path:polygon(0 0,50% 55%,100% 0);
+  transform-origin:top;
+  transition:transform 1s;
+  z-index:3;
+}
+.flap-bottom{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:100%;
+  background:#f2cfc2;
+  clip-path:polygon(0 100%,50% 45%,100% 100%);
+  transform-origin:bottom;
+  transition:transform 1s;
+  z-index:1;
+}
+
+/* CARTA */
+.letter{
+  position:absolute;
+  top:18px;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  background:linear-gradient(to bottom,#ffe6ef,#ffd7e5);
+  border-radius:22px;
+  padding:30px 28px;
+  text-align:center;
+  transform:translateY(100%);
+  transition:transform 1s 1s;
+  z-index:2;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.6);
+}
+
+/* ANIMACIÓN */
+.envelope.open .flap-top{transform:rotateX(180deg)}
+.envelope.open .flap-bottom{transform:rotateX(-180deg)}
+.envelope.open .letter{transform:translateY(0)}
+
+/* TEXTO */
+.letter h1{
+  font-family:'Great Vibes',cursive;
+  font-size:2.3em;
+  color:#a63a6a;
+}
+.intro{
+  font-style:italic;
+  color:#b04b78;
+  margin:12px 0;
+}
+.question{
+  font-size:1.5em;
+  color:#8b2e5f;
+  margin:18px 0;
+}
+.signature{
+  font-family:'Great Vibes',cursive;
+  font-size:1.4em;
+  color:#a63a6a;
+}
+
+/* BOTONES */
+button{
+  margin:12px 8px;
+  padding:12px 26px;
+  border-radius:30px;
+  border:none;
+  font-size:1em;
+  cursor:pointer;
+}
+.yes{
+  background:linear-gradient(to right,#ff4f8b,#ff78a5);
+  color:white;
+}
+.no{
+  background:white;
+  color:#a02a5e;
+  border:2px solid #f2a6c3;
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-text">mi princesitaaa</div>
+
+<div class="envelope" onclick="openEnvelope()">
+  <div class="heart-lock">❤️</div>
+  <div class="flap-top"></div>
+  <div class="flap-bottom"></div>
+
+  <div class="letter">
+    <h1>Mi princesita yoli</h1>
+
+    <p class="intro">
+     A veces siento que no encuentro las palabras exactas para decirte todo lo que significas para mí, pero hoy quiero intentarlo.
+
+Si algún día sientes un vacío, si tu mente se llena de cosas que prefieres guardar en silencio, quiero que recuerdes algo: no estás sola, incluso cuando decides estar sola. Mi amor por ti no se apaga en tus momentos difíciles, al contrario… ahí es cuando más quiero abrazarte.
+
+No me asusta que necesites espacio. No me asusta que no siempre puedas dar todo tu cariño. Lo único que me importa es que sigas siendo tú. Esa niña fuerte que no quiere que la vean débil, pero que sin darse cuenta me deja ver su lado más real… y eso lo valoro más de lo que imaginas.
+
+Si tu mundo se vuelve silencioso, yo puedo ser paciente.
+Si tu corazón se siente confundido, yo puedo esperar.
+Porque quererte no es exigirte, es elegirte… incluso en tus días grises.
+
+No quiero cambiarte.
+Quiero caminar contigo mientras sigues creciendo.
+
+Y aunque a veces sobrepiense, lo único que es claro en mí es esto: cada día me gustas más, y mi amor por ti no depende de cómo te sientas hoy.
+
+Aquí estoy. No para presionarte.
+Sino para amarte bonito.
+
+Y si alguna vez sientes que el mundo pesa… aquí estoy.
+
+Siempre contigo
+    </p>
+
+    <p class="question">Eres mi niña preciosa</p>
+
+    <p>❤️ ❤️ ❤️</p>
+
+    <p class="signature">— Con amor, tu ferrero rocher 💕</p>
+
+    <button class="yes"
+      onclick="event.stopPropagation(); alert('💖 te mega adoro mi mugrosita prechiocha, ayayay quien la quele, pollo JAJAAJA tamoooo💖')">
+      Sí tamooo💞
+    </button>
+
+    <button class="no"
+      onclick="event.stopPropagation(); noQuiero()">
+      No tamo
+    </button>
+  </div>
+</div>
+
+<script>
+function openEnvelope(){
+  document.querySelector('.envelope').classList.add('open');
+}
+
+function noQuiero(){
+  // 🔗 CAMBIA AQUÍ LA CANCIÓN
+  window.open("https://youtu.be/0YoNbeGEIRM?list=RD0YoNbeGEIRM");
+  setTimeout(()=>{
+    alert("🥺 nadie me quiere todos me odian mejor me como un gusanito :(");
+  },500);
+}
+
+/* ESTRELLAS */
+for(let i=0;i<90;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  document.body.appendChild(s);
+}
+
+/* CORAZONES */
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=5+Math.random()*6+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
